@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pivetão - Criptomoeda</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            pointer-events: auto; /* Permitir interações no corpo */
+        }
+        .header {
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            background: linear-gradient(to right, #333, #111);
+            border-bottom: 2px solid #4CAF50;
+            pointer-events: none; /* Impede interações na área do cabeçalho */
+        }
+        h1 {
+            margin: 0;
+            font-size: 4em;
+            color: #4CAF50;
+            text-shadow: 2px 2px #000;
+            animation: fadeIn 1s;
+            pointer-events: auto; /* Permitir interações no texto */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
+            pointer-events: auto; /* Permitir interações nos botões */
+        }
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: auto; /* Permitir interações na área do container */
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .feature {
+            background: #222;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33% - 40px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s;
+            pointer-events: auto; /* Permitir interações nas features */
+        }
+        .feature:hover {
+            transform: scale(1.05);
+        }
+        .feature h3 {
+            color: #4CAF50;
+        }
+        .contact-form {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+            pointer-events: auto; /* Permitir interações no formulário */
+        }
+        .contact-form h2 {
+            margin-top: 0;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            transition: border 0.3s;
+            pointer-events: auto; /* Permitir interações nos campos do formulário */
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #45a049;
+        }
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #111;
+            text-align: center;
+            width: 100%;
+            pointer-events: auto; /* Permitir interações no rodapé */
+        }
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #4CAF50;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .feature {
+                width: calc(100% - 40px);
+            }
+            .button {
+                width: 100%;
+            }
+        }
+        .team-section {
+            margin: 20px 0;
+            width: 100%;
+        }
+        .team-member {
+            display: inline-block;
+            text-align: center;
+            margin: 10px;
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        .testimonials {
+            margin: 20px 0;
+            width: 100%;
+        }
+        .testimonial {
+            background: #222;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.imgur.com/1cykWg1.png" alt="Logo Pivetão" style="width: 150px; height: auto;">
+        <h1>Pivetão</h1>
+        <button class="button" id="connectButton">Conectar MetaMask</button>
+    </div>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature">
+                <h3>Segurança</h3>
+                <p>A Pivetão utiliza as melhores práticas de segurança para proteger seus ativos e dados.</p>
+            </div>
+            <div class="feature">
+                <h3>Transações Rápidas</h3>
+                <p>Com tecnologia avançada, as transações são processadas rapidamente, garantindo eficiência.</p>
+            </div>
+            <div class="feature">
+                <h3>Suporte ao Usuário</h3>
+                <p>Nosso time de suporte está disponível para ajudá-lo em qualquer dúvida ou necessidade.</p>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Nosso Time</h2>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Membro 1">
+                <h4>Membro 1</h4>
+                <p>Desenvolvedor Blockchain</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Membro 2">
+                <h4>Membro 2</h4>
+                <p>Especialista em Marketing</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Membro 3">
+                <h4>Membro 3</h4>
+                <p>Gerente de Suporte</p>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <h2>Depoimentos</h2>
+            <div class="testimonial">
+                <p>"A Pivetão revolucionou minha maneira de investir em criptomoedas!"</p>
+                <p>- Usuário Satisfeito</p>
+            </div>
+            <div class="testimonial">
+                <p>"Transações rápidas e seguras. Recomendo!"</p>
+                <p>- Outro Usuário Satisfeito</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Contato</h2>
+            <form id="contactForm">
+                <input type="text" name="nome" placeholder="Seu nome" required>
+                <input type="email" name="email" placeholder="Seu e-mail" required>
+                <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Pivetão. Todos os direitos reservados.</p>
+        <a href="https://instagram.com/criptopivete" target="_blank">Instagram</a>
+    </div>
+
+    <script>
+        document.getElementById('connectButton').onclick = function() {
+            if (typeof window.ethereum !== 'undefined') {
+                window.ethereum.request({ method: 'eth_requestAccounts' })
+                    .then(accounts => {
+                        console.log('Conta conectada:', accounts[0]);
+                        Swal.fire('MetaMask conectado!', `Conta: ${accounts[0]}`);
+                    })
+                    .catch(error => {
+                        console.error('Erro ao conectar:', error);
+                        Swal.fire('Erro', 'Não foi possível conectar ao MetaMask.', 'error');
+                    });
+            } else {
+                Swal.fire('Erro', 'MetaMask não está instalada.', 'error');
+            }
+        };
+
+        document.getElementById('contactForm').onsubmit = function(e) {
+            e.preventDefault();
+            const nome = e.target.nome.value;
+            const email = e.target.email.value;
+            const mensagem = e.target.mensagem.value;
+
+            // Sanitização dos dados
+            const sanitizedNome = nome.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            const sanitizedEmail = email.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            const sanitizedMensagem = mensagem.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            // Aqui você pode enviar os dados para o servidor
+            console.log('Dados enviados:', { nome: sanitizedNome, email: sanitizedEmail, mensagem: sanitizedMensagem });
+            Swal.fire('Mensagem enviada com sucesso!');
+            document.getElementById('contactForm').reset();
+        };
+    </script>
+</body>
+</html>
